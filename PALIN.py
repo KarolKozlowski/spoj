@@ -1,20 +1,24 @@
 #!/usr/bin/env python
 
 
-def is_palin(string):
-    arr = list(string)
-    rev = arr[::-1]
-    return arr == rev
+def is_palin(digit):
+    reverse = 0
+    num = digit
 
+    while num != 0:
+        reverse = reverse * 10 + num % 10
+        num = num / 10
 
-def next_palin(string):
-    i = int(string)+1
-    while not is_palin(str(i)):
+    return digit == reverse
+
+def next_palin(digit):
+    i = digit+1
+    while not is_palin(i):
         i = i+1
     return i
 
 if __name__ == "__main__":
     examples = int(raw_input())
     for i in range(examples):
-        case = raw_input()
+        case = int(raw_input())
         print next_palin(case)
